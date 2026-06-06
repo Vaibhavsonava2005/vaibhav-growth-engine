@@ -1,0 +1,110 @@
+# ===================================================
+# VAIBHAV GROWTH ENGINE — .gitignore
+# ===================================================
+
+# ── Environment & secrets ────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Python cache ─────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+
+# ── Distribution / packaging ─────────────────────────────────────────────────
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+MANIFEST
+
+# ── Virtual environments ─────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+.pytest_cache/
+.tox/
+.nox/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+*.hypothesis/
+nosetests.xml
+test-results/
+
+# ── Type checking ─────────────────────────────────────────────────────────────
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+logs/*.log
+logs/*.log.*
+*.log
+
+# ── Data / Reports (preserve directory skeleton via .gitkeep) ─────────────────
+data/*.csv
+data/*.json
+data/*.xlsx
+data/*.parquet
+!data/.gitkeep
+
+# ── IDE & editor artifacts ────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# ── OS artifacts ─────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Jupyter Notebooks ─────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.bak
+*.tmp
+*.orig
+.cache/
+
+.vercel
+.next/
+node_modules/
+out/
+dashboard/.next/
+dashboard/node_modules/
+dashboard/out/

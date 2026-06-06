@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "framework": "nextjs",
+  "rootDirectory": "dashboard",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "env": {
+    "NEXT_PUBLIC_APP_NAME": "Vaibhav Growth Engine",
+    "NEXT_PUBLIC_GITHUB": "https://github.com/Vaibhavsonava2005"
+  }
+}
