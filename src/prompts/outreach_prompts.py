@@ -178,14 +178,10 @@ feel natural, add new value, and never feel pushy or desperate.
 === ORIGINAL EMAIL ===
 Subject: {original_subject}
 
-{original_body}
-
 === RECIPIENT CONTEXT ===
 - Name: {contact_name}
-- Title: {contact_title}
 - Company: {company_name}
-- Industry: {industry}
-- Days since original email was sent: {days_since_send}
+- Days since original email was sent: {days_since_first}
 
 === INSTRUCTIONS ===
 
