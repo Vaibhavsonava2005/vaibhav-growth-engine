@@ -75,6 +75,7 @@ class CampaignStatus(str, Enum):
     """Lifecycle state of an outbound email campaign."""
 
     DRAFT = "draft"
+    RUNNING = "running"
     APPROVED = "approved"
     SENDING = "sending"
     SENT = "sent"
