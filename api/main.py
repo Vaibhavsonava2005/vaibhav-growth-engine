@@ -90,13 +90,27 @@ class RunCampaignRequest(BaseModel):
 def _run_pipeline_background(job_id: str, domain: str, product: str, dry_run: bool) -> None:
     """Execute GrowthPipeline in a background thread."""
     try:
+        from src.models.campaign import Campaign, CampaignStatus
+        
+        crm = CRMManager()
+        campaign_name = f"api-{domain.split('.')[0]}-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+        dummy_campaign = Campaign(name=campaign_name, target_domain=domain, status=CampaignStatus.RUNNING)
+        crm.save_campaign(dummy_campaign)
+
         pipeline = GrowthPipeline()
         campaign = pipeline.run(
             domain=domain,
-            campaign_name=f"api-{domain.split('.')[0]}-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
+            campaign_name=campaign_name,
             sender_product=product,
             dry_run=dry_run,
         )
+        
+        # Override ID to replace the dummy campaign in CRM
+        campaign.id = dummy_campaign.id
+        
+        # Send emails & Save final results to CRM
+        pipeline.send_campaign(campaign, dry_run=dry_run)
+
         _jobs[job_id] = {
             "status": "done",
             "result": {
@@ -112,6 +126,12 @@ def _run_pipeline_background(job_id: str, domain: str, product: str, dry_run: bo
         }
     except Exception as exc:
         _jobs[job_id] = {"status": "error", "result": {"error": str(exc)}}
+        # Mark dummy as failed if we created one
+        try:
+            dummy_campaign.status = CampaignStatus.FAILED
+            crm.save_campaign(dummy_campaign)
+        except:
+            pass
 
 
 # ---------------------------------------------------------------------------
